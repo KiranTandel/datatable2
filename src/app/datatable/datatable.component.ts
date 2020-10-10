@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-datatable',
+  templateUrl: './datatable.component.html',
+  styleUrls: ['./datatable.component.scss']
 })
-export class AppComponent {
-  title = 'datatableDemo';
+export class DatatableComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
   rows = [
     { name: 'Austin', gender: 'Male', company: 'Swimlane' },
@@ -14,4 +18,5 @@ export class AppComponent {
     { name: 'Molly', gender: 'Female', company: 'Burger King' }
   ];
   columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
+
 }
