@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatatableComponent implements OnInit {
 
+  editing = {};
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.editing);
   }
 
   rows = [
@@ -18,5 +21,10 @@ export class DatatableComponent implements OnInit {
     { name: 'Molly', gender: 'Female', company: 'Burger King' }
   ];
   columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
+
+  updateValue(event, cell, rowIndex){
+    console.log('inline editing rowIndex', rowIndex)
+    this.editing[rowIndex + '-' + cell] = false;
+  }
 
 }
