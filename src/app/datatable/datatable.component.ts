@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-datatable',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatatableComponent implements OnInit {
 
-  editing = {};
+  public editing = {};
+  public selected = [];
+  public myRows: [];
 
-  constructor() { }
+  constructor(private userService: UsersService) {
+  }
 
   ngOnInit(): void {
     console.log(this.editing);
+    this.getUsers();
   }
 
   rows = [
@@ -21,10 +26,19 @@ export class DatatableComponent implements OnInit {
     { name: 'Molly', gender: 'Female', company: 'Burger King' }
   ];
   columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
+  columns2 = [{ prop: 'id' }, { name: 'name' }, { name: 'address' }, { name: 'email' }];
 
-  updateValue(event, cell, rowIndex){
+  updateValue(event, cell, rowIndex) {
     console.log('inline editing rowIndex', rowIndex)
     this.editing[rowIndex + '-' + cell] = false;
+  }
+
+  getUsers(): void {
+    this.userService.getUsers().subscribe(
+      (data) => {
+        this.myRows = data;
+      }
+    );
   }
 
 }

@@ -1,8 +1,74 @@
-<div class="m-2">
-  <ngx-datatable class="material" [rows]="rows" [columns]="columns"> </ngx-datatable>
+<div class="row mb-5 ">
+  <div class="m-0 col-6">
+    <h3>Static Data</h3>
+    <ngx-datatable class="material" [rowHeight]="45" [headerHeight]="50" [footerHeight]="50" [selected]="selected"
+      [rows]="rows" [columns]="columns">
+
+      <!-- <ngx-datatable-column *ngFor="let column of columns; let i = index;" name="{{column.name}}"
+        prop="{{column.prop}}">
+        <ng-template let-value="value" let-row="row" *ngIf="column.name=='Actions'" ngx-datatable-cell-template>
+          <span>
+            <button>Abc</button>
+            <i class="fa fa-pencil" style="color:green;font-size:20px;"></i>
+            <i class="fa fa-trash" style="color:red;font-size:20px;"></i>
+          </span>
+        </ng-template>
+      </ngx-datatable-column> -->
+
+      <ngx-datatable-column *ngFor="let col of columns" [name]="col.name" [prop]="col.prop"></ngx-datatable-column>
+
+      <ngx-datatable-column name="Action2">
+        <ng-template ngx-datatable-cell-template>
+          <span>
+            <i class="fa fa-pencil mr-2" style="color: green;font-size:20px;"></i>
+            <i class="fa fa-trash" style="color:red;font-size:20px;"></i>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable>
+
+    <!-- <ngx-datatable-column name="Action">
+      <ng-template ngx-datatable-cell-template>
+        <button>Option</button>
+      </ng-template>
+    </ngx-datatable-column> -->
+
+
+  </div>
+  <div class="m-1 col-6">
+    <h3>Dynamic Data</h3>
+    <ngx-datatable class="material" [rowHeight]="45" [headerHeight]="50" [footerHeight]="50" [selected]="selected"
+      [rows]="myRows" [columns]="columns2">
+
+      <!-- <ngx-datatable-column *ngFor="let column of columns2; let i = index;" name="{{column.name}}"
+        prop="{{column.prop}}">
+        <ng-template let-value="value" let-row="row" *ngIf="column.name=='Actions'" ngx-datatable-cell-template>
+          <span>
+            <button>Abc</button>
+            <i class="fa fa-pencil" style="color:green;font-size:20px;"></i>
+            <i class="fa fa-trash" style="color:red;font-size:20px;"></i>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>  -->
+
+      <ngx-datatable-column *ngFor="let col of columns2" [name]="col.name" [prop]="col.prop"></ngx-datatable-column>
+
+      <ngx-datatable-column name="Action2">
+        <ng-template ngx-datatable-cell-template>
+          <span>
+            <i class="fa fa-pencil mr-2" style="color: green;font-size:20px;"></i>
+            <i class="fa fa-trash" style="color:red;font-size:20px;"></i>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable>
+  </div>
 </div>
 
-<ngx-datatable-column name="Name">
+
+<!-- <ngx-datatable-column name="Name">
   <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
     <span title="Double click to edit" (dblclick)="editing[rowIndex + '-name'] = true" *ngIf="!editing[rowIndex + '-name']">
         {{value}}
@@ -10,4 +76,4 @@
     <input autofocus (blur)="this.updateValue($event, 'name', rowIndex)" *ngIf="editing[rowIndex+ '-name']" type="text" [value]="value"
     />
   </ng-template>
-</ngx-datatable-column>
+</ngx-datatable-column> -->
