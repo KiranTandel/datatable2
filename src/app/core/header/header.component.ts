@@ -11,5 +11,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  public setLocalStorage() {
+    localStorage.setItem('email', 'kiran@gmail.com');
+    localStorage.setItem('password', 'kiran123');
+  }
+  public clearLocalStorage() {
+    localStorage.clear();
+  }
 
 }
