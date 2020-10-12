@@ -12,18 +12,17 @@
     [columns]="columns">
 
     <ngx-datatable-column
-                [width]="10"
-                [sortable]="false"
-                [canAutoResize]="false"
-                [draggable]="false"
-                [resizeable]="false"
-                [headerCheckboxable]="true"
-                [checkboxable]="true">
-        </ngx-datatable-column>
+        [width]="10"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="true">
+    </ngx-datatable-column>
 
         <ng-container *ngFor="let column of columns; let j = index;">
-
-          <ngx-datatable-column [name]="columns[j].name" [sortable]="false">
+          <ngx-datatable-column [name]="columns[j].name" [sortable]="true">
 
             <ng-template ngx-datatable-header-template>
               <span [ngStyle]="{ 'font-weight': 'bold'}">{{columns[j].name}}</span>
@@ -39,7 +38,6 @@
             </ng-template>
 
           </ngx-datatable-column>
-
         </ng-container>
 
       <!-- <ngx-datatable-column *ngFor="let column of columns; let i = index;" name="{{column.name}}"
@@ -56,9 +54,10 @@
       <!-- <ngx-datatable-column *ngFor="let col of columns" [name]="col.name" [prop]="col.prop"></ngx-datatable-column> -->
 
       <ngx-datatable-column name="Action2">
-        <ng-template ngx-datatable-cell-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
           <span>
-            <i class="fa fa-pencil mr-2" style="color: green;font-size:20px;cursor: pointer;"></i>
+            <i class="fa fa-pencil mr-2" style="color: green;font-size:20px;cursor: pointer;"
+            ></i>
             <i class="fa fa-trash" style="color:red;font-size:20px;cursor: pointer;"></i>
           </span>
         </ng-template>
@@ -132,12 +131,13 @@
         </ng-container>
       <!-- <ngx-datatable-column *ngFor="let col of columns2" [name]="col.name" [prop]="col.prop"></ngx-datatable-column> -->
 
-      <ngx-datatable-column name="Action2">
-        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex">
+      <ngx-datatable-column prop="id" name="Action2">
+        <ng-template let-id="value" ngx-datatable-cell-template let-rowIndex="rowIndex">
           <span>
             <i class="fa fa-pencil mr-2" style="color: green;font-size:20px;cursor: pointer;"
-            (click)="onEdit($event)"></i>
-            <i class="fa fa-trash" style="color:red;font-size:20px;cursor: pointer;"></i>
+            (click)="onEdit(id)"></i>
+            <i class="fa fa-trash" style="color:red;font-size:20px;cursor: pointer;"
+            (click)="onDelete(id)"></i>
           </span>
         </ng-template>
       </ngx-datatable-column>

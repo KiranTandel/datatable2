@@ -26,7 +26,7 @@ export class DatatableComponent implements OnInit {
     { name: 'Dany', gender: 'Male', company: 'KFC' },
     { name: 'Molly', gender: 'Female', company: 'Burger King' }
   ];
-  columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
+  columns = [{prop:'checkbox'},{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
   columns2 = [
     { prop: 'id' }, { name: 'Name' }, { name: 'Address' }, { name: 'Email' }];
 
@@ -47,9 +47,19 @@ export class DatatableComponent implements OnInit {
 
   }
 
-  onEdit(event){
+  onEdit(id){
+    debugger
     // alert(rowIndex);
-    console.log(event);
+    console.log(id);
+  }
+  onDelete(id){
+    debugger
+    alert(id);
+    console.log(id);
+    this.userService.deleteUsers(id).subscribe(()=>{
+      alert(`Deleted`);
+      this.getUsers();
+    });
   }
 
 }
