@@ -10,7 +10,7 @@ export class DatatableComponent implements OnInit {
 
   public editing = {};
   public selected = [];
-  public myRows: [];
+  public myRows = [];
 
   constructor(private userService: UsersService) {
   }
@@ -26,12 +26,13 @@ export class DatatableComponent implements OnInit {
     { name: 'Molly', gender: 'Female', company: 'Burger King' }
   ];
   columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
-  columns2 = [{ prop: 'id' }, { name: 'name' }, { name: 'address' }, { name: 'email' }];
+  columns2 = [
+    { prop: 'id' }, { name: 'Name' }, { name: 'Address' }, { name: 'Email' }];
 
-  updateValue(event, cell, rowIndex) {
-    console.log('inline editing rowIndex', rowIndex)
-    this.editing[rowIndex + '-' + cell] = false;
-  }
+  // updateValue(event, cell, rowIndex) {
+  //   console.log('inline editing rowIndex', rowIndex)
+  //   this.editing[rowIndex + '-' + cell] = false;
+  // }
 
   getUsers(): void {
     this.userService.getUsers().subscribe(
@@ -39,6 +40,10 @@ export class DatatableComponent implements OnInit {
         this.myRows = data;
       }
     );
+  }
+
+  onSelect(event) {
+
   }
 
 }
