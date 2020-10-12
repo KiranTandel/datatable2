@@ -1,5 +1,5 @@
 <div class="row ml-2 mb-5 ">
-  <!-- static -->
+  <!-- 1. Static -->
   <div class="m-0 col-6">
     <h3>Static Data</h3>
 
@@ -21,6 +21,27 @@
                 [checkboxable]="true">
         </ngx-datatable-column>
 
+        <ng-container *ngFor="let column of columns; let j = index;">
+
+          <ngx-datatable-column [name]="columns[j].name" [sortable]="false">
+
+            <ng-template ngx-datatable-header-template>
+              <span [ngStyle]="{ 'font-weight': 'bold'}">{{columns[j].name}}</span>
+            </ng-template>
+
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+              <span title="Double click to edit" (dblclick)="editing[rowIndex + '-' + columns[j].name] = true"
+                *ngIf="!editing[rowIndex + '-' + columns[j].name]">
+                {{value}}
+              </span>
+              <input autofocus (blur)="updateValue($event, 'columns[j].name', rowIndex)" *ngIf="editing[rowIndex+ '-' + columns[j].name]"
+                type="text" [value]="value" />
+            </ng-template>
+
+          </ngx-datatable-column>
+
+        </ng-container>
+
       <!-- <ngx-datatable-column *ngFor="let column of columns; let i = index;" name="{{column.name}}"
         prop="{{column.prop}}">
         <ng-template let-value="value" let-row="row" *ngIf="column.name=='Actions'" ngx-datatable-cell-template>
@@ -32,7 +53,7 @@
         </ng-template>
       </ngx-datatable-column> -->
 
-      <ngx-datatable-column *ngFor="let col of columns" [name]="col.name" [prop]="col.prop"></ngx-datatable-column>
+      <!-- <ngx-datatable-column *ngFor="let col of columns" [name]="col.name" [prop]="col.prop"></ngx-datatable-column> -->
 
       <ngx-datatable-column name="Action2">
         <ng-template ngx-datatable-cell-template>
@@ -52,7 +73,8 @@
     </ngx-datatable-column> -->
 
   </div>
-  <!-- Dynamic -->
+
+  <!-- 2. Dynamic -->
   <div class="m-1 col-6">
     <h3>Dynamic Data</h3>
     <ngx-datatable class="material striped"
@@ -88,12 +110,33 @@
                 [checkboxable]="true">
         </ngx-datatable-column>
 
-      <ngx-datatable-column *ngFor="let col of columns2" [name]="col.name" [prop]="col.prop"></ngx-datatable-column>
+        <ng-container *ngFor="let column of columns2; let j = index;">
+
+          <ngx-datatable-column [name]="columns2[j].name" [sortable]="true">
+
+            <ng-template ngx-datatable-header-template>
+              <span [ngStyle]="{ 'font-weight': 'bold'}">{{columns2[j].name}}</span>
+            </ng-template>
+
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+              <span title="Double click to edit" (dblclick)="editing[rowIndex + '-' + columns2[j].name] = true"
+                *ngIf="!editing[rowIndex + '-' + columns2[j].name]">
+                {{value}}
+              </span>
+              <input autofocus (blur)="updateValue($event, 'columns2[j].name', rowIndex)" *ngIf="editing[rowIndex+ '-' + columns2[j].name]"
+                type="text" [value]="value" />
+            </ng-template>
+
+          </ngx-datatable-column>
+
+        </ng-container>
+      <!-- <ngx-datatable-column *ngFor="let col of columns2" [name]="col.name" [prop]="col.prop"></ngx-datatable-column> -->
 
       <ngx-datatable-column name="Action2">
-        <ng-template ngx-datatable-cell-template>
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex">
           <span>
-            <i class="fa fa-pencil mr-2" style="color: green;font-size:20px;cursor: pointer;"></i>
+            <i class="fa fa-pencil mr-2" style="color: green;font-size:20px;cursor: pointer;"
+            (click)="onEdit($event)"></i>
             <i class="fa fa-trash" style="color:red;font-size:20px;cursor: pointer;"></i>
           </span>
         </ng-template>
