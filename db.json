@@ -1,40 +1,58 @@
 {
-  "users":[
+  "users": [
     {
-      "id":1,
-      "name":"kiran",
-      "address":"valsad",
-      "email":"kiran@gmail.com"
+      "id": 1,
+      "name": "kiran",
+      "address": "bharuch",
+      "email": "kiran@gmail.com"
     },
     {
-      "id":2,
-      "name":"jay",
-      "address":"vapi",
-      "email":"jay@gmail.com"
+      "id": 2,
+      "name": "krupal",
+      "address": "bharuch",
+      "email": "krupal@gmail.com"
     },
     {
-      "id":3,
-      "name":"pinal",
-      "address":"pune",
-      "email":"pinal@gmail.com"
+      "id": 3,
+      "name": "vini",
+      "address": "bardoli",
+      "email": "vini@gmail.com"
     },
     {
-      "id":4,
-      "name":"ketan",
-      "address":"baroda",
-      "email":"ketan@gmail.com"
+      "id": 4,
+      "name": "zayn",
+      "address": "dandi",
+      "email": "zayn@gmail.com"
     },
     {
-      "id":5,
-      "name":"abhi",
-      "address":"navsari",
-      "email":"abhi@gmail.com"
+      "id": 5,
+      "name": "abhi",
+      "address": "navsari",
+      "email": "abhi@gmail.com"
     },
     {
-      "id":6,
-      "name":"dhruv",
-      "address":"maroli",
-      "email":"dhruv@gmail.com"
+      "id": 6,
+      "name": "rahul",
+      "address": "navsari",
+      "email": "rahul@gmail.com"
+    },
+    {
+      "id": 7,
+      "name": "savan",
+      "address": "navsari",
+      "email": "savan@gmail.com"
+    },
+    {
+      "name": "mayur",
+      "address": "mumbai",
+      "email": "mayur@gmail.com",
+      "id": 8
+    },
+    {
+      "name": "yuvi",
+      "address": "surat",
+      "email": "yuvi@gmail.com",
+      "id": 9
     }
   ]
 }

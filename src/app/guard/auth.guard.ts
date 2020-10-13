@@ -1,3 +1,7 @@
+/**
+ * @author Kiran Tandel
+ */
+
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { interval, Observable } from 'rxjs';

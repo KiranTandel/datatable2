@@ -1,6 +1,6 @@
 <div class="row ml-2 mb-5 ">
   <!-- 1. Static -->
-  <div class="m-0 col-6">
+  <!-- <div class="m-0 col-6">
     <h3>Static Data</h3>
 
     <ngx-datatable class="material"
@@ -40,19 +40,6 @@
           </ngx-datatable-column>
         </ng-container>
 
-      <!-- <ngx-datatable-column *ngFor="let column of columns; let i = index;" name="{{column.name}}"
-        prop="{{column.prop}}">
-        <ng-template let-value="value" let-row="row" *ngIf="column.name=='Actions'" ngx-datatable-cell-template>
-          <span>
-            <button>Abc</button>
-            <i class="fa fa-pencil" style="color:green;font-size:20px;"></i>
-            <i class="fa fa-trash" style="color:red;font-size:20px;"></i>
-          </span>
-        </ng-template>
-      </ngx-datatable-column> -->
-
-      <!-- <ngx-datatable-column *ngFor="let col of columns" [name]="col.name" [prop]="col.prop"></ngx-datatable-column> -->
-
       <ngx-datatable-column name="Action2">
         <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
           <span>
@@ -65,13 +52,7 @@
 
     </ngx-datatable>
 
-    <!-- <ngx-datatable-column name="Action">
-      <ng-template ngx-datatable-cell-template>
-        <button>Option</button>
-      </ng-template>
-    </ngx-datatable-column> -->
-
-  </div>
+  </div> -->
 
   <!-- 2. Dynamic -->
   <div class="m-1 col-6">
@@ -122,14 +103,23 @@
                 *ngIf="!editing[rowIndex + '-' + columns2[j].name]">
                 {{value}}
               </span>
-              <input autofocus (blur)="updateValue($event, 'columns2[j].name', rowIndex)" *ngIf="editing[rowIndex+ '-' + columns2[j].name]"
-                type="text" [value]="value" />
+              <!-- <form [formGroup]="userForm"> -->
+                <input  (blur)="updateValue($event,row,'columns2[j].name',rowIndex)" *ngIf="editing[rowIndex+ '-' + columns2[j].name]"
+                type="text" [(ngModel)]="row.name" [value]="value" />
+              <!-- </form> -->
+
             </ng-template>
 
           </ngx-datatable-column>
 
         </ng-container>
       <!-- <ngx-datatable-column *ngFor="let col of columns2" [name]="col.name" [prop]="col.prop"></ngx-datatable-column> -->
+
+      <!-- <ngx-datatable-column prop="id" name="Name">
+        <ng-template let-id="value" ngx-datatable-cell-template let-rowIndex="rowIndex">
+          {{myRows}}
+        </ng-template>
+      </ngx-datatable-column> -->
 
       <ngx-datatable-column prop="id" name="Action2">
         <ng-template let-id="value" ngx-datatable-cell-template let-rowIndex="rowIndex">
@@ -156,3 +146,5 @@
     />
   </ng-template>
 </ngx-datatable-column> -->
+
+{{myRows | json}}

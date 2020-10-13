@@ -10,7 +10,8 @@ import { DatatableComponent } from './datatable/datatable.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guard/auth.guard';
-import { MyinterceptorService } from './services/myinterceptor.interceptor';
+import { Myinterceptor } from './services/myinterceptor.interceptor';
+import { HttpErrorInterceptor } from './services/http-error-interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MyinterceptorService } from './services/myinterceptor.interceptor';
     ReactiveFormsModule
   ],
   providers: [AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: MyinterceptorService, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: Myinterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }],
   bootstrap: [AppComponent],
   exports: [DatatableComponent]
 })

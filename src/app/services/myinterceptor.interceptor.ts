@@ -1,3 +1,7 @@
+/**
+ * @author Kiran Tandel
+ */
+
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -5,14 +9,13 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 
-export class MyinterceptorService implements HttpInterceptor {
+export class Myinterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    debugger
+    const token: string = localStorage.getItem('email');
     const customReq = request.clone({
-      headers: request.headers.set('author', 'kiran')
+      headers: request.headers.set('Authorization', 'Bearer:- ' + token)
     });
-    debugger
     console.log('processing request', customReq);
 
     return next
